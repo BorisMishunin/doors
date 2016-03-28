@@ -33,8 +33,6 @@ p{
     font-size: 18px;
 }
 
-
-
 nav {
     font-size: 18px;
 }
@@ -43,11 +41,27 @@ nav {
     margin-left: 20%;
 }
 
-.colors{
+.good_img {
     
+}
+
+.good_colors{
+    float: right;
+}
+
+.good_color{   
+    margin: 5px 0;
     height: 25px;
     width: 25px;
     border-radius: 50px;
     border: 1px solid #ccc;
-    
+}
+
+.good_card {
+    height: 300px;
+    overflow: hidden;
+}
+
+.good_card:hover {
+    height: auto;    
 }
