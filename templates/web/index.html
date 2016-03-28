@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+
+{% block content %}
+    <div class="container" ng-controller = 'DoorsController'>
+       <div class="row">
+         <!-- <label for="n">Имя:</label><input type="text" name="n" id="" ng-model="name">
+          <p>Привет {$name$}</p>  -->        
+          
+          
+          <div class="well col-sm-3" ng-repeat="good in goods">
+              <img class = "good_img" src="{$ good.goods_colors[0].goods_images[0].image $}" alt="">
+             
+              <div class = "row">               
+                  <div class="col-xs-1" ng-repeat="color in good.goods_colors">
+                     <div class="colors" style="background-color: {$ color.color $}"></div>
+                  </div>
+              </div>
+              
+            {$ good.name $}
+          </div>
+          
+       </div>        
+    </div>
+{% endblock %}
