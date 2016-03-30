@@ -22,7 +22,12 @@ class GoodsColorDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = GoodsColorsSerializer
 
 class GoodsImagesList(generics.ListCreateAPIView):
-    queryset = GoodsImages.objects.all()
+    def get_queryset(self):
+        color_pk = self.kwargs.get('color_pk')
+        if not color_pk:
+            return GoodsImages.objects.all()
+        return GoodsImages.objects.filter(goodcolor_id = color_pk)
+    
     serializer_class = GoodsImagesSerializer
 
 class GoodsImagesDetail(generics.RetrieveUpdateDestroyAPIView):

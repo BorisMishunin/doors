@@ -33,6 +33,6 @@
 }
 
 .good_color:hover {
-    border-color: deepskyblue;
+    border-color: darkcyan;
     cursor: pointer;
 }

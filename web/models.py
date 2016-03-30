@@ -45,7 +45,7 @@ class GoodsColors(models.Model):
         return '%s - %s' % (str(self.good), self.color.name)
 
 class GoodsImages(models.Model):
-    good_color = models.ForeignKey(GoodsColors, verbose_name='Товар', related_name='goods_images')
+    goodcolor = models.ForeignKey(GoodsColors, verbose_name='Товар', related_name='goods_images')
     image = models.ImageField('Фото', upload_to='goods_foto')
 
     class Meta:
@@ -53,5 +53,5 @@ class GoodsImages(models.Model):
         verbose_name_plural = 'Фото товара'
 
     def __str__(self):
-        return str(self.good_color)
+        return str(self.goodcolor)
 
