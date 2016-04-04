@@ -1,5 +1,6 @@
-from web_api.serializers import GoodsImagesSerializer, GoodsSerializer, GoodsColorsSerializer
+from web_api.serializers import GoodsImagesSerializer, GoodsSerializer, GoodsColorsSerializer, ActionsSerializer
 from web.models import GoodsColors, GoodsImages, Goods
+from sales.models import Actions
 from rest_framework import generics
 from rest_framework import filters
 
@@ -33,3 +34,7 @@ class GoodsImagesList(generics.ListCreateAPIView):
 class GoodsImagesDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = GoodsImages.objects.all()
     serializer_class = GoodsImagesSerializer
+
+class ActionsDetail(generics.ListCreateAPIView):
+    queryset = Actions.objects.all()
+    serializer_class = ActionsSerializer

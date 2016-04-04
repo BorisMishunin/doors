@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^goods_images/$', views.GoodsImagesList.as_view()),
     url(r'^goods_images/(?P<color_pk>[0-9]+)/$', views.GoodsImagesList.as_view()),
     url(r'^goods_images/image/(?P<pk>[0-9]+)/$', views.GoodsImagesDetail.as_view(), name='payments_transcript-detail'),
+    url(r'^actions/$', views.ActionsDetail.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

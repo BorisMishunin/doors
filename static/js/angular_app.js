@@ -9,6 +9,10 @@ app.controller('DoorsController', function($scope, $http){
     $http.get('/api/goods.json').success(function(data){
        $scope.goods = data;
     });
+    $http.get('/api/actions.json').success(function(data){
+        alert(data);
+       $scope.actions = data;
+    });
     $scope.name = 'Boris';  
 });
 

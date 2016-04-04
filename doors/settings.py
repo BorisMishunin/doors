@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'web',
     'rest_framework',
     'web_api',
+    'sales',
 )
 
 MIDDLEWARE_CLASSES = (
