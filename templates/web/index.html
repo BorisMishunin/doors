@@ -14,7 +14,7 @@
           </p>
           <ul class="bxslider">
              {% for action in actions %}
-              <li><img src="{{action.foto.url}}" alt=""></li>
+              <li><img class="carousel-img" src="{{action.foto.url}}" alt=""></li>
              {% endfor %}
           </ul>
           <!--<div class="jumbotron owl-carousel">
@@ -33,7 +33,7 @@
                 </div>      
                          
                 <h4>{$ good.name $}</h4>
-                <p>{$ good.desc $}</p>
+                <p class="good-desc">{$ good.desc $}</p>
                 <p><a class="btn btn-default" href="#" role="button">Заказать &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
            

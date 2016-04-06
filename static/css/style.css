@@ -1,5 +1,5 @@
 
-.good_card:hover {
+.good_card:hover{
     border-color: darkcyan;
 }
 
@@ -35,4 +35,15 @@
 .good_color:hover {
     border-color: darkcyan;
     cursor: pointer;
+}
+
+.carousel-img {
+    margin: auto;
+}
+
+.good-desc {
+    white-space: nowrap;
+    max-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

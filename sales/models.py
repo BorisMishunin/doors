@@ -5,7 +5,7 @@ class Actions(models.Model):
     foto = models.ImageField('Фото', upload_to='actions')
     actual = models.BooleanField('Актуальность', default=True)
 
-    class Мета:
+    class Meta:
         verbose_name = 'Акция'
         verbose_name_plural = 'Акции'
 
