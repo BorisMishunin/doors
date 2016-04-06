@@ -12,11 +12,16 @@
           <p class="pull-right visible-xs">
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Фильтр</button>
           </p>
-          <div class="jumbotron owl-carousel">
+          <ul class="bxslider">
+             {% for action in actions %}
+              <li><img src="{{action.foto.url}}" alt=""></li>
+             {% endfor %}
+          </ul>
+          <!--<div class="jumbotron owl-carousel">
               <div ng-repeat="action in actions">
                   dfgdgddfgdg
               </div>
-          </div>
+          </div>-->
           <div class="row">
             <div  class="col-xs-6 col-lg-4 thumbnail good_card" ng-repeat="good in goods" ng-controller='ColorsController'
                ng-init = "mainImage = good.goods_colors[0].goods_images[0].image">

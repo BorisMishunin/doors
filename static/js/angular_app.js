@@ -10,14 +10,12 @@ app.controller('DoorsController', function($scope, $http){
        $scope.goods = data;
     });
     $http.get('/api/actions.json').success(function(data){
-        alert(data);
        $scope.actions = data;
     });
     $scope.name = 'Boris';  
 });
 
 app.controller('ColorsController', function($scope, $http){
-    console.log($scope.mainImg);
     $scope.showImage = function(color_id){        
         $http.get('/api/goods_images/'+color_id+'.json').success(function(data){
             $scope.mainImage = data[0].image;

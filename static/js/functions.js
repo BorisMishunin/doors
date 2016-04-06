@@ -1,12 +1,6 @@
-$(document).ready(function(){    
-  $('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:10,
-    nav:true,
-    items:1,
-    margin:10,
-    autoplay:true,
-    autoplayTimeout:5000,
-    autoplayHoverPause:true
+$(document).ready(function(){
+  $('.bxslider').bxSlider({
+  auto: true,
+  autoControls: true
   });
-});    
+});
