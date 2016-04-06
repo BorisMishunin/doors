@@ -1,5 +1,6 @@
 {
     "jscodehints.detectedExclusions": [
-        "/home/boris/doors/static/js/bootstrap.min.js"
+        "/home/boris/doors/static/js/bootstrap.min.js",
+        "/home/boris/doors/static/js/functions.js"
     ]
 }
