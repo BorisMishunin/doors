@@ -9,7 +9,8 @@
     max-width: 200px;
     display: block;
     margin-left: auto;
-    margin-right: auto 
+    margin-right: auto;
+    z-index: 99;
 }
 
 .good_img{
@@ -19,8 +20,8 @@
 
 .good_color{   
     margin: 5px 0px;
-    height: 25px;
-    width: 25px;
+    height: 30px;
+    width: 30px;
     border-radius: 50px;
     border: 1px solid #ccc;
 }
@@ -46,4 +47,10 @@
     max-height: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.good_color img {
+    max-height: 100%;
+    max-width: 100%;
+    overflow: hidden;  
 }
