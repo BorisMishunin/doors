@@ -24,8 +24,11 @@ app.controller('DoorsController', function($scope, $http){
     $scope.name = 'Boris';  
     
     $scope.doorHover = function($event){
-        descfield = angular.element($event.target.querySelector('p'));
-        console.log($event.target);
+        target = $event.target
+        if (target.className.indexOf('good_card')<0)
+            target = target.offsetParent;
+        descfield = angular.element(target.querySelector('p'));
+        console.log(target);
         console.log($event);
         console.log($scope);
         if ($event.type=="mouseover")
