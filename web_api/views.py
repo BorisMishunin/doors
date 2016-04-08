@@ -16,10 +16,10 @@ class GoodsDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class GoodsImagesList(generics.ListCreateAPIView):
     def get_queryset(self):
-        good_pk = self.kwargs.get('good_pk')
-        if not good_pk:
+        pk = self.kwargs.get('good_pk')
+        if not pk:
             return GoodsImages.objects.all()
-        return GoodsImages.objects.filter(good_id = good_pk)
+        return GoodsImages.objects.filter(id = pk)
     
     serializer_class = GoodsImagesSerializer
 
