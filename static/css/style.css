@@ -10,6 +10,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    z-index: 99;
 }
 
 .good_img{
@@ -23,7 +24,7 @@
     width: 30px;
     border-radius: 50px;
     border: 1px solid #ccc;
-    overflow: hidden;
+    overflow: hidden;  
 }
 
 .good_colors{
@@ -52,5 +53,5 @@
 .good_color img {
     max-height: 100%;
     max-width: 100%;
-    overflow: hidden;  
+    
 }

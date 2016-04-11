@@ -28,9 +28,6 @@ app.controller('DoorsController', function($scope, $http){
         if (target.className.indexOf('good_card')<0)
             target = target.offsetParent;
         descfield = angular.element(target.querySelector('p'));
-        console.log(target);
-        console.log($event);
-        console.log($scope);
         if ($event.type=="mouseover")
             descfield.removeClass('good-desc');
         else
@@ -39,7 +36,7 @@ app.controller('DoorsController', function($scope, $http){
 });
 
 app.controller('ColorsController', function($scope, $http){
-    $scope.showImage = function(color_id){        
+    $scope.showImage = function(color_id){   
         $http.get('/api/goods_images/'+color_id+'.json').success(function(data){
             $scope.mainImage = data[0].image;
         }); 
