@@ -33,6 +33,10 @@ app.controller('DoorsController', function($scope, $http){
         else
             descfield.addClass('good-desc');            
     };
+     $scope.ff = function(){
+         console.log($scope.Filter);
+     };
+    
 });
 
 app.controller('ColorsController', function($scope, $http){

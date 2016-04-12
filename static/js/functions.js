@@ -4,8 +4,9 @@ $(document).ready(function(){
   autoControls: true
   });
     
- $('.good_card').on('click', function(){
-      console.log('ddd');
-     //alert(this.find('.good-desc').html());
+  $('[data-toggle="offcanvas"]').click(function () {
+    alert('ddd');
+    $('.row-offcanvas').toggleClass('active')
   });
+    
 });

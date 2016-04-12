@@ -10,18 +10,13 @@
 
         <div class="col-xs-12 col-sm-9">
           <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Фильтр</button>
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas" >Фильтр</button>
           </p>
           <ul class="bxslider">
              {% for action in actions %}
               <li><img class="carousel-img" src="{{action.foto.url}}" alt=""></li>
              {% endfor %}
           </ul>
-          <!--<div class="jumbotron owl-carousel">
-              <div ng-repeat="action in actions">
-                  dfgdgddfgdg
-              </div>
-          </div>-->
           <div class="row">
            
             <div class="col-xs-6 col-lg-4 thumbnail good_card" ng-repeat="good in goods" ng-controller='ColorsController'
@@ -45,18 +40,56 @@
         </div><!--/.col-xs-12.col-sm-9-->
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-          <div class="list-group">
-            <a href="#" class="list-group-item active">Фильтры</a>
-            <a href="#" class="list-group-item">Фильтр</a>
-            <a href="#" class="list-group-item">Фильтр</a>
-            <a href="#" class="list-group-item">Фильтр</a>
-            <a href="#" class="list-group-item">Фильтр</a>
-            <a href="#" class="list-group-item">Фильтр</a>
-            <a href="#" class="list-group-item">Фильтр</a>
-            <a href="#" class="list-group-item">Фильтр</a>
-            <a href="#" class="list-group-item">Фильтр</a>
-            <a href="#" class="list-group-item">Фильтр</a>
-          </div>
+          <p>Фильтры</p>
+          <div class="panel-group" id="accordion">
+              <!-- 1 панель -->
+              <div class="panel panel-default">
+                <!-- Заголовок 1 панели -->
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">1. Bootstrap 3 - Введение</a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                  <!-- Содержимое 1 панели -->
+                  <div class="panel-body">
+                    <label>Comedy</label><input  type="checkbox" ng-model="Filter.Comedy" ng-true-value="'Comedy'"  ng-false-value="'0'" ng-click = 'ff()'/ ><br/>
+                    <label>Action</label><input  type="checkbox" ng-model="Filter.Action" ng-true-value="'Action'"  ng-false-value="'0'"/><br/>
+                    <label>Drama</label><input  type="checkbox" ng-model="Filter.Drama" ng-true-value="'Drama'"  ng-false-value="'0'"/>
+                  </div>
+                </div>
+              </div>
+              <!-- 2 панель -->
+              <div class="panel panel-default">
+                <!-- Заголовок 2 панели -->
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">2. Bootstrap 3 - Начало работы</a>
+                  </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                  <!-- Содержимое 2 панели -->
+                  <div class="panel-body">
+                    <p>Изучение технологии лучше всего начать с простого <a href="http://itchief.ru/lessons/bootstrap-3/20-lesson-2-getting-started-with-twitter-bootstrap-3" target="_blank">урока</a>. На котором изучается как подключить Twitter Bootstrap к своему проекту и вывести с помощью него простейший текст.</p>
+                  </div>
+                </div>
+              </div>
+              <!-- 3 панель -->
+              <div class="panel panel-default">
+                <!-- Заголовок 3 панели -->
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">3. Bootstrap 3 - Создание сайта</a>
+                  </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                  <!-- Содержимое 3 панели -->
+                  <div class="panel-body">
+                    <p>Создание сайта - это трудоемкий процесс, который состоит из нескольких этапов. В качестве примера рассмотрим создание сайта визитки на этом <a href="http://itchief.ru/lessons/bootstrap-3/website-creation-business-cards-(part-1)" target="_blank">уроке</a>, в котором рассмотрим процесс загрузки необходимых пакетов и проектирования макета сайта.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div><!--/.sidebar-offcanvas-->
       </div><!--/row-->
 {% endblock %}      

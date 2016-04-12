@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from web.models import GoodsColors, GoodsImages, Goods
+from web.models import GoodsColors, GoodsImages, Goods, Countries
 from sales.models import Actions
 from rest_framework import serializers
 
@@ -31,3 +31,7 @@ class ActionsSerializer(serializers.ModelSerializer):
         model = Actions
         fields = '__all__'
 
+class CountriesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Countries
+        fields = '__all__'
