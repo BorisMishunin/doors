@@ -111,7 +111,7 @@ class Properties(models.Model):
         return str(self.name)
 
 class Values(models.Model):
-    good_property = models.ForeignKey(Properties, verbose_name="Свойство")
+    good_property = models.ForeignKey(Properties, verbose_name="Свойство", related_name="property_values")
     value = models.CharField('Значение', max_length=150)
 
     class Meta:

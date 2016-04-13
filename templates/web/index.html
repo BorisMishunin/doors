@@ -19,7 +19,7 @@
           </ul>
           <div class="row">
            
-            <div class="col-xs-6 col-lg-4 thumbnail good_card" ng-repeat="good in goods" ng-controller='ColorsController'
+            <div class="col-xs-6 col-lg-4 thumbnail good_card" ng-repeat="good in goods|GoodsFilter:filters:this" ng-controller='ColorsController'
                ng-init = "mainImage = good.goods_colors[0].goods_images[0].image" ng-mouseenter="doorHover($event)" ng-mouseleave="doorHover($event)">
                 <div class="input">
                    <div class="good_img">
@@ -53,9 +53,14 @@
                 <div id="collapseOne" class="panel-collapse collapse in">
                   <!-- Содержимое 1 панели -->
                   <div class="panel-body">
-                    <label>Comedy</label><input  type="checkbox" ng-model="Filter.Comedy" ng-true-value="'Comedy'"  ng-false-value="'0'" ng-click = 'ff()'/ ><br/>
-                    <label>Action</label><input  type="checkbox" ng-model="Filter.Action" ng-true-value="'Action'"  ng-false-value="'0'"/><br/>
-                    <label>Drama</label><input  type="checkbox" ng-model="Filter.Drama" ng-true-value="'Drama'"  ng-false-value="'0'"/>
+                      <div ng-repeat="filter in filters">
+                        <h3 class="sort">{$filter.name$}</h3>
+                        <ul class="sortoptions">
+                          <li ng-repeat="option in filter.property_values">
+                            <input type="checkbox" ng-model="option.IsIncluded" ng-checked="option.IsIncluded"> {$option.value$}
+                          </li>
+                        </ul>
+                      </div>
                   </div>
                 </div>
               </div>

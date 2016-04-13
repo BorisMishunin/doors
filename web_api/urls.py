@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^actions/$', views.ActionsList.as_view()),
     url(r'^countries/$', views.CountriesList.as_view()),
     url(r'^goods_properties/$', views.GoodsPropertiesList.as_view()),
+    url(r'^properties/$', views.PropertiesList.as_view()),
     url(r'^values/$', views.ValuesList.as_view()),
 ]
 

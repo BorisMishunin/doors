@@ -22,8 +22,28 @@ app.controller('DoorsController', function($scope, $http){
        $scope.actions = data;
     });
     
+    $scope.filters = [];
     
+    $http.get('/api/properties.json').success(function(data){
+       $scope.filters = data;
+    });
     
+    $http.get('/api/goods_colors.json').success(function(data){
+       $scope.colors = data;
+    });
+    
+    var filter = {};
+    filter.name = 'Цвета';
+    filter.property_values = [];
+    _.each($scope.colors, function(color){
+        filter.property_values.push({
+            value: color.color 
+        });
+    });
+    
+    $scope.filters.push(filter);
+    
+    console.log($scope.filters);
     
     $scope.doorHover = function($event){
         target = $event.target
@@ -42,8 +62,26 @@ app.controller('DoorsController', function($scope, $http){
 });
 
 app.filter('GoodsFilter', function(){
-    return function(goods, filers, scope){
+    return function(goods, filters, scope){
+        var filtered = [];
         
+        var include_filters = _.filter(filters, function(filter){
+            return _.any(filter.property_values, {'IsIncluded':true})
+        });
+        
+        _.each(goods, function(good){
+            var is_included = true;
+            _.each(include_filters, function(filter){
+                var properties = _.filter(good.properties, {'name': filter.name}); 
+                if(! _.any(properties, function(prop){return _.any(filter.property_values, {'value': prop.value, 'IsIncluded':true});})){
+                    is_included = false;
+                };
+            });
+            if (is_included){
+                filtered.push(good);
+            }
+        });
+        return filtered;
     };
 });
 

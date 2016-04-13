@@ -1,5 +1,6 @@
-from web_api.serializers import GoodsImagesSerializer, GoodsSerializer, GoodsColorsSerializer, ActionsSerializer, CountriesSerializer, ValuesSerializer, GoodsPropertiesSerializer
-from web.models import GoodsColors, GoodsImages, Goods, Countries, Values, GoodsProperties
+from web_api.serializers import GoodsImagesSerializer, GoodsSerializer, \
+    GoodsColorsSerializer, ActionsSerializer, CountriesSerializer, ValuesSerializer, GoodsPropertiesSerializer, PropertiesSerializer
+from web.models import GoodsColors, GoodsImages, Goods, Countries, Values, GoodsProperties, Properties
 from sales.models import Actions
 from rest_framework import generics
 from rest_framework import filters
@@ -51,3 +52,6 @@ class GoodsPropertiesList(generics.ListCreateAPIView):
     queryset = GoodsProperties.objects.all()
     serializer_class = GoodsPropertiesSerializer
 
+class PropertiesList(generics.ListCreateAPIView):
+    queryset = Properties.objects.all()
+    serializer_class = PropertiesSerializer

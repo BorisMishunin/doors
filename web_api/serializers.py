@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from web.models import GoodsColors, GoodsImages, Goods, Countries, GoodsProperties, Values
+from web.models import GoodsColors, GoodsImages, Goods, Countries, GoodsProperties, Values, Properties
 from sales.models import Actions
 from rest_framework import serializers
 
@@ -11,6 +11,12 @@ class ValuesSerializer(serializers.ModelSerializer):
      )
     class Meta:
         model = Values
+        fields = '__all__'
+
+class PropertiesSerializer(serializers.ModelSerializer):
+    property_values = ValuesSerializer(many=True)
+    class Meta:
+        model = Properties
         fields = '__all__'
 
 class GoodsPropertiesSerializer(serializers.ModelSerializer):
