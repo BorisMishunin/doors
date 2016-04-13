@@ -21,7 +21,9 @@ app.controller('DoorsController', function($scope, $http){
     $http.get('/api/actions.json').success(function(data){
        $scope.actions = data;
     });
-    $scope.name = 'Boris';  
+    
+    
+    
     
     $scope.doorHover = function($event){
         target = $event.target
@@ -37,6 +39,12 @@ app.controller('DoorsController', function($scope, $http){
          console.log($scope.Filter);
      };
     
+});
+
+app.filter('GoodsFilter', function(){
+    return function(goods, filers, scope){
+        
+    };
 });
 
 app.controller('ColorsController', function($scope, $http){

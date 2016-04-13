@@ -123,11 +123,11 @@ class Values(models.Model):
 
 class GoodsProperties(models.Model):
     good = models.ForeignKey(Goods, verbose_name='Товар', related_name='goods_properties')
-    value = models.ForeignKey(Values, verbose_name="Значение свойства")
+    value = models.ForeignKey(Values, verbose_name="Значение свойства", related_name='good_value')
 
     class Meta:
         verbose_name = 'Свойство товара'
         verbose_name_plural = 'Свойства товаров'
 
     def __str__(self):
-        return "%s - %s" % (str(self.good_property), self.value)
+        return "%s - %s" % (str(self.good), self.value)

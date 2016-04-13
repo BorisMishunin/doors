@@ -1,8 +1,28 @@
 from django.contrib.auth.models import User, Group
-from web.models import GoodsColors, GoodsImages, Goods, Countries
+from web.models import GoodsColors, GoodsImages, Goods, Countries, GoodsProperties, Values
 from sales.models import Actions
 from rest_framework import serializers
 
+class ValuesSerializer(serializers.ModelSerializer):
+    good_property = serializers.SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field='name'
+     )
+    class Meta:
+        model = Values
+        fields = '__all__'
+
+class GoodsPropertiesSerializer(serializers.ModelSerializer):
+    property = serializers.ReadOnlyField(source='value.good_property.name')
+    value = serializers.SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field='value'
+     )
+    class Meta:
+        model = GoodsProperties
+        fields = '__all__'
 
 class GoodsImagesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -22,6 +42,7 @@ class GoodsColorsSerializer(serializers.ModelSerializer):
 
 class GoodsSerializer(serializers.ModelSerializer):
     goods_colors = GoodsColorsSerializer(many=True)
+    goods_properties = GoodsPropertiesSerializer(many=True)
     class Meta:
         model = Goods
         fields = '__all__'
