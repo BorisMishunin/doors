@@ -1,4 +1,4 @@
-var app = angular.module('doorsApp', []);
+var app = angular.module('doorsApp', ['ui.bootstrap']);
 
 app.config(function($interpolateProvider){
     $interpolateProvider.startSymbol('{$').endSymbol('$}');
@@ -32,6 +32,9 @@ app.controller('DoorsController', function($scope, $http){
        $scope.colors = data;
     });
     
+    $scope.maxSize = 5;
+    $scope.bigTotalItems = 175;
+    $scope.bigCurrentPage = 1;
     /*var filter = {};
     filter.name = 'Цвета';
     filter.property_values = [];
@@ -55,10 +58,14 @@ app.controller('DoorsController', function($scope, $http){
         else
             descfield.addClass('good-desc');            
     };
-     $scope.ff = function(){
-         console.log($scope.Filter);
-     };
-    
+        
+});
+
+app.filter('PanginationFilter', function($scope){
+    return function(goods, currPage, scope){
+        console.log(scope.bigTotalItems);
+        return goods;
+    };
 });
 
 app.filter('GoodsFilter', function(){

@@ -19,7 +19,7 @@
           </ul>
           <div class="row">
            
-            <div class="col-xs-6 col-lg-4 thumbnail good_card" ng-repeat="good in goods|GoodsFilter:filters" ng-controller='ColorsController'
+            <div class="col-xs-6 col-lg-4 thumbnail good_card" ng-repeat="good in goods|GoodsFilter:filters|PanginationFilter:1:this" ng-controller='ColorsController'
                ng-init = "mainImage = good.goods_colors[0].goods_images[0].image" ng-mouseenter="doorHover($event)" ng-mouseleave="doorHover($event)">
                 <div class="input">
                    <div class="good_img">
@@ -70,4 +70,6 @@
             </div>
         </div><!--/.sidebar-offcanvas-->
       </div><!--/row-->
+      <uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false"></uib-pagination>
+    </div>
 {% endblock %}      
