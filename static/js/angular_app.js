@@ -32,7 +32,7 @@ app.controller('DoorsController', function($scope, $http){
        $scope.colors = data;
     });
     
-    var filter = {};
+    /*var filter = {};
     filter.name = 'Цвета';
     filter.property_values = [];
     _.each($scope.colors, function(color){
@@ -43,13 +43,13 @@ app.controller('DoorsController', function($scope, $http){
     
     $scope.filters.push(filter);
     
-    console.log($scope.filters);
+    console.log($scope.filters);*/
     
     $scope.doorHover = function($event){
         target = $event.target
         if (target.className.indexOf('good_card')<0)
             target = target.offsetParent;
-        descfield = angular.element(target.querySelector('p'));
+        descfield = angular.element(target.querySelector('.desc'));
         if ($event.type=="mouseover")
             descfield.removeClass('good-desc');
         else
@@ -62,17 +62,19 @@ app.controller('DoorsController', function($scope, $http){
 });
 
 app.filter('GoodsFilter', function(){
-    return function(goods, filters, scope){
+    return function(goods, filters){
         var filtered = [];
         
         var include_filters = _.filter(filters, function(filter){
             return _.any(filter.property_values, {'IsIncluded':true})
         });
         
+        
+        
         _.each(goods, function(good){
             var is_included = true;
             _.each(include_filters, function(filter){
-                var properties = _.filter(good.properties, {'name': filter.name}); 
+                var properties = _.filter(good.goods_properties, {'property': filter.name}); 
                 if(! _.any(properties, function(prop){return _.any(filter.property_values, {'value': prop.value, 'IsIncluded':true});})){
                     is_included = false;
                 };
@@ -81,6 +83,9 @@ app.filter('GoodsFilter', function(){
                 filtered.push(good);
             }
         });
+        
+        
+        
         return filtered;
     };
 });

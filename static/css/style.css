@@ -93,3 +93,11 @@
     
     border-radius: 5px;    
 }
+.filter-values-panel {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.filters-panel {
+    padding: 0;
+}

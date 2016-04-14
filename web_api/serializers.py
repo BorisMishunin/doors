@@ -29,6 +29,7 @@ class GoodsPropertiesSerializer(serializers.ModelSerializer):
     class Meta:
         model = GoodsProperties
         fields = '__all__'
+        
 
 class GoodsImagesSerializer(serializers.ModelSerializer):
     class Meta:

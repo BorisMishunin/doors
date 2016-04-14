@@ -106,6 +106,7 @@ class Properties(models.Model):
     class Meta:
         verbose_name = 'Свойство'
         verbose_name_plural = 'Свойства'
+        ordering = ('name', )
 
     def __str__(self):
         return str(self.name)
@@ -128,6 +129,7 @@ class GoodsProperties(models.Model):
     class Meta:
         verbose_name = 'Свойство товара'
         verbose_name_plural = 'Свойства товаров'
+        ordering = ('value',)
 
     def __str__(self):
         return "%s - %s" % (str(self.good), self.value)
