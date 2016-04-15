@@ -14,6 +14,16 @@ app.config(function($interpolateProvider){
     };
 });*/
 
+app.filter('startFrom', function() {
+    return function(input, start) {
+        if(input) {
+            start = +start; //parse to int
+            return input.slice(start);
+        }
+        return [];
+    }
+});
+
 app.controller('DoorsController', function($scope, $http){
     $http.get('/api/goods.json').success(function(data){
        $scope.goods = data;
@@ -33,8 +43,9 @@ app.controller('DoorsController', function($scope, $http){
     });
     
     $scope.maxSize = 5;
-    $scope.bigTotalItems = 175;
-    $scope.bigCurrentPage = 1;
+    $scope.totalItems = 0;
+    $scope.currentPage = 1;
+    $scope.entryLimit = 3;
     /*var filter = {};
     filter.name = 'Цвета';
     filter.property_values = [];
@@ -58,7 +69,15 @@ app.controller('DoorsController', function($scope, $http){
         else
             descfield.addClass('good-desc');            
     };
-        
+    
+    
+    
+     $scope.$watch(function(){
+            $scope.filteredItems = $scope.$eval("goods|GoodsFilter:filters");
+            $scope.totalItems = $scope.filteredItems.length;
+        });
+    
+    
 });
 
 app.filter('PanginationFilter', function($scope){
@@ -90,7 +109,6 @@ app.filter('GoodsFilter', function(){
                 filtered.push(good);
             }
         });
-        
         
         
         return filtered;
