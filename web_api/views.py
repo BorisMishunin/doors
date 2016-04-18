@@ -1,6 +1,6 @@
-from web_api.serializers import GoodsImagesSerializer, GoodsSerializer, \
+from web_api.serializers import  GoodsSerializer, \
     GoodsColorsSerializer, ActionsSerializer, CountriesSerializer, ValuesSerializer, GoodsPropertiesSerializer, PropertiesSerializer
-from web.models import GoodsColors, GoodsImages, Goods, Countries, Values, GoodsProperties, Properties
+from web.models import GoodsColors, Goods, Countries, Values, GoodsProperties, Properties
 from sales.models import Actions
 from rest_framework import generics
 from rest_framework import filters
@@ -22,19 +22,6 @@ class GoodsColorsList(generics.ListCreateAPIView):
 class GoodsColorDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = GoodsColors.objects.all()
     serializer_class = GoodsColorsSerializer
-
-class GoodsImagesList(generics.ListCreateAPIView):
-    def get_queryset(self):
-        color_pk = self.kwargs.get('color_pk')
-        if not color_pk:
-            return GoodsImages.objects.all()
-        return GoodsImages.objects.filter(goodcolor_id = color_pk)
-
-    serializer_class = GoodsImagesSerializer
-
-class GoodsImagesDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = GoodsImages.objects.all()
-    serializer_class = GoodsImagesSerializer
 
 class ActionsList(generics.ListCreateAPIView):
     queryset = Actions.objects.all()

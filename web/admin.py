@@ -1,14 +1,7 @@
 from django.contrib import admin
-from web.models import Colors, GoodsImages, Goods, GoodsColors, Countries, TypesOfGoods, Values, GoodsProperties, Properties
+from web.models import Colors, Goods, GoodsColors, Countries, TypesOfGoods, Values, GoodsProperties, Properties
 from web.widgets import ColorPickerWidget
 # Register your models here.
-
-class GoodsColorsInline(admin.StackedInline):
-    model = GoodsImages
-    extra = 3
-
-class GoodsColorsAdmin(admin.ModelAdmin):
-    inlines = [GoodsColorsInline,]
 
 class GoodsInlines(admin.StackedInline):
     model = GoodsColors
@@ -30,8 +23,7 @@ class GoodsPropertiesAdmin(admin.ModelAdmin):
     filter = ('good',)
 
 admin.site.register(Colors, ColorsAdmin)
-admin.site.register(GoodsImages)
-admin.site.register(GoodsColors,GoodsColorsAdmin)
+admin.site.register(GoodsColors)
 admin.site.register(Goods, GoodsAdmin)
 admin.site.register(Countries)
 admin.site.register(TypesOfGoods)

@@ -33,8 +33,7 @@ class Goods(models.Model):
     name = models.CharField('Название', max_length=150)
     desc = models.TextField('Описание',null=True, blank=True)
     type = models.ForeignKey(TypesOfGoods, verbose_name='Тип товара')
-    country = models.ForeignKey(Countries, verbose_name='Страна производитель', null=True, blank=True)
-
+    foto = models.ImageField('Фото', upload_to='goods_foto')
 
     class Meta:
         verbose_name = 'Товар'
@@ -43,10 +42,31 @@ class Goods(models.Model):
     def __str__(self):
         return '%s - %s' % (self.article, self.name)
 
+    def save(self, force_insert=False, force_update=False, using=None):
+        try:
+            obj = Goods.objects.get(id=self.id)
+            print(obj)
+            if obj and (obj.foto.path != self.foto.path):
+                thumnails.delete_thumbnail(obj.foto.path)
+        except:
+            pass
+
+        super(Goods, self).save()
+        thumnails.make_thumbnail(self.foto.path)
+
+    def delete(self, using=None):
+        try:
+            obj = Goods.objects.get(id=self.id)
+            thumnails.delete_thumbnail(obj.foto.path)
+            obj.foto.delete()
+        except (Goods.DoesNotExist, ValueError):
+            pass
+        super(Goods, self).delete()
+
 
 class Colors(models.Model):
     name = models.CharField('Цвет', max_length=150)
-
+    image = models.ImageField('Фото', upload_to='colors_foto')
 
     class Meta:
         verbose_name = 'Цвет'
@@ -54,6 +74,27 @@ class Colors(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, force_insert=False, force_update=False, using=None):
+        try:
+            obj = Colors.objects.get(id=self.id)
+            print(obj)
+            if obj and (obj.image.path != self.image.path):
+                thumnails.delete_thumbnail(obj.image.path)
+        except:
+            pass
+
+        super(Colors, self).save()
+        thumnails.make_thumbnail(self.image.path)
+
+    def delete(self, using=None):
+        try:
+            obj = Colors.objects.get(id=self.id)
+            thumnails.delete_thumbnail(obj.image.path)
+            obj.image.delete()
+        except (Colors.DoesNotExist, ValueError):
+            pass
+        super(Colors, self).delete()
 
 class GoodsColors(models.Model):
     good = models.ForeignKey(Goods, verbose_name='Товар', related_name='goods_colors')
@@ -65,40 +106,6 @@ class GoodsColors(models.Model):
 
     def __str__(self):
         return '%s - %s' % (str(self.good), self.color.name)
-
-class GoodsImages(models.Model):
-    goodcolor = models.ForeignKey(GoodsColors, verbose_name='Товар', related_name='goods_images')
-    image = models.ImageField('Фото', upload_to='goods_foto')
-
-    class Meta:
-        verbose_name = 'Фото товара'
-        verbose_name_plural = 'Фото товара'
-
-    def __str__(self):
-        return str(self.goodcolor)
-    
-    def save(self, force_insert=False, force_update=False, using=None):
-        try:
-            obj = GoodsImages.objects.get(id=self.id)
-            print(obj)
-            if obj and (obj.image.path != self.image.path):
-                thumnails.delete_thumbnail(obj.image.path)
-        except:
-            pass
-
-        super(GoodsImages, self).save()
-        thumnails.make_thumbnail(self.image.path)
-
-    def delete(self, using=None):
-        try:
-            obj = GoodsImages.objects.get(id=self.id)
-            thumnails.delete_thumbnail(obj.image.path)
-            obj.image.delete()
-        except (GoodsImages.DoesNotExist, ValueError):
-            pass
-        super(GoodsImages, self).delete()
-
-        
 
 class Properties(models.Model):
     name = models.CharField('Имя', max_length=150)
