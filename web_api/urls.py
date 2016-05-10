@@ -4,6 +4,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from web_api import views
 
 urlpatterns = [
+    url(r'^load_goods/$', 'web.views.loadGoods'),
     url(r'^goods/$', views.GoodsList.as_view()),
     url(r'^goods/(?P<pk>[0-9]+)$', views.GoodsDetail.as_view()),
     url(r'^goods_colors/$', views.GoodsColorsList.as_view()),

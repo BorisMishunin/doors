@@ -1,0 +1,11 @@
+{% extends "admin/change_list.html" %}
+{% load i18n %}
+{% block object-tools-items %}
+    <li><a class="addlink" href="/admin/web/typesofgoods/add/"> Добавить товар </a></li>
+    <li>
+        <form enctype="multipart/form-data" action="/api/load_goods/" method="post">
+            <input id="image_file" type="file" class="file" name="image_file"  style="padding:0; margin:0">
+            <input type="submit" style="padding:0; margin:0">
+        </form>
+    </li>
+{% endblock %}

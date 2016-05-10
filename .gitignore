@@ -20,7 +20,7 @@ pip-delete-this-directory.txt
 *.log
 migrations/
 
-media/image
+media/
 
 # Sphinx documentation
 docs/_build/

@@ -6,6 +6,9 @@ def getThumbnail(path):
     filename_split = filename.split('.')
     filename = '.'.join(filename_split[0: len(filename_split)-1])
     ext = filename_split[len(filename_split)-1]
+    filename_path = os.path.join(filename_path, 'thumbnails')
+    if not os.path.exists(filename_path):
+        os.mkdir(filename_path)
     return '%s.thumbnail.%s' %(os.path.join(filename_path, filename), ext)
 
 def make_thumbnail(path, size=(200,200)):

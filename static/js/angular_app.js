@@ -45,7 +45,7 @@ app.controller('DoorsController', function($scope, $http){
     $scope.maxSize = 5;
     $scope.totalItems = 0;
     $scope.currentPage = 1;
-    $scope.entryLimit = 3;
+    $scope.entryLimit = 9;
     /*var filter = {};
     filter.name = 'Цвета';
     filter.property_values = [];
