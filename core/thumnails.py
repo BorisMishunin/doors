@@ -1,13 +1,13 @@
 from PIL import Image
 import os
 
-def getThumbnail(path):
+def getThumbnail(path, isPath=True):
     filename_path, filename = os.path.split(path)
     filename_split = filename.split('.')
     filename = '.'.join(filename_split[0: len(filename_split)-1])
     ext = filename_split[len(filename_split)-1]
     filename_path = os.path.join(filename_path, 'thumbnails')
-    if not os.path.exists(filename_path):
+    if isPath and not os.path.exists(filename_path):
         os.mkdir(filename_path)
     return '%s.thumbnail.%s' %(os.path.join(filename_path, filename), ext)
 

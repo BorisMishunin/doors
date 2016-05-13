@@ -43,6 +43,7 @@ class GoodsColorsSerializer(serializers.ModelSerializer):
 class GoodsSerializer(serializers.ModelSerializer):
     goods_colors = GoodsColorsSerializer(many=True)
     goods_properties = GoodsPropertiesSerializer(many=True)
+    thumnail_foto = serializers.CharField(source='thumnail_img')
     class Meta:
         model = Goods
         fields = '__all__'

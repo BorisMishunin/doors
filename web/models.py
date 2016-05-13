@@ -1,7 +1,9 @@
 from _json import make_encoder
+from builtins import property
 
 from django.db import models
 from core import thumnails
+import os
 
 
 # Create your models here.
@@ -53,6 +55,12 @@ class Goods(models.Model):
 
         super(Goods, self).save()
         thumnails.make_thumbnail(self.foto.path)
+
+    @property
+    def thumnail_img(self):
+        img_url = self.foto.url
+        thumnail_url = thumnails.getThumbnail(img_url, False)
+        return thumnail_url if os.path.exists(thumnails.getThumbnail(self.foto.path)) else img_url
 
     def delete(self, using=None):
         try:
