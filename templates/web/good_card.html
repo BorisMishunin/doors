@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+
+{% block content %}
+    <div class="container" ng-controller="GoodCardController">
+        <div class="row">
+           <div class="col-lg-4">
+              <img src="{$ good.foto $}" width="100%" height="100%" alt="">               
+           </div>
+           <div class="col-lg-8">
+              <table class="param-table">
+                  <tr>
+                      <td width = "60%" class="param-сol">
+                          <div class="param-name">
+                              <span class="p">Параметр</span>
+                          </div>
+                      </td>
+                      <td>значение</td>
+                      <td>значение</td>
+                  </tr>
+                  <tr>
+                      <td class="paramCol">Параметр</td>
+                      <td>значение</td>
+                      <td>значение</td>
+                  </tr>
+                  <tr>
+                      <td class="paramCol">Параметр</td>
+                      <td>значение</td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td class="paramCol">Параметр</td>
+                      <td>значение</td>
+                      <td>значение</td>
+                  </tr>
+              </table>                                            
+           </div>            
+        </div>
+    </div>
+{% endblock %}

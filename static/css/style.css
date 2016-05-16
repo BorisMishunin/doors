@@ -101,3 +101,28 @@
 .filters-panel {
     padding: 0;
 }
+
+
+.param-сol {
+    border-bottom: 1px dotted #ccc;
+    padding: 0;
+    vertical-align: top;
+}
+
+.param-table {
+    width: 100%;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.param-name {
+    width: 100%;
+    position: relative;
+}
+
+.p {
+    top: 2px;+79253595322
+    position: absolute;
+    padding: 0 5px;
+    background-color: white;
+}

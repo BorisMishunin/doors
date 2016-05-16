@@ -10,6 +10,9 @@ def index(request):
     params['actions'] = Actions.objects.all()
     return render(request, "web/index.html", params)
 
+def good_card(request):
+    return render(request, "web/index.html",)
+
 @csrf_exempt
 def loadGoods(request):
     filename = str(request.FILES['image_file'])

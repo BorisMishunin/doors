@@ -24,6 +24,12 @@ app.filter('startFrom', function() {
     }
 });
 
+app.controller('GoodCardController', function($scope, $http){
+    $http.get('/api/goods/690.json').success(function(data){
+        $scope.good = data;
+    });
+});
+
 app.controller('DoorsController', function($scope, $http){
     $http.get('/api/goods.json').success(function(data){
        $scope.goods = data;

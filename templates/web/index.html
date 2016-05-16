@@ -21,7 +21,7 @@
           <div class="row">
            
             <div class="col-xs-6 col-lg-4 thumbnail good_card" ng-repeat="good in goods|GoodsFilter:filters|startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit" ng-controller='ColorsController'
-               ng-init = "mainImage = good.foto" ng-mouseenter="doorHover($event)" ng-mouseleave="doorHover($event)">
+               ng-init = "mainImage = good.thumnail_foto" ng-mouseenter="doorHover($event)" ng-mouseleave="doorHover($event)">
                 <div class="input">
                    <div class="good_img">
                     <img  src="{$ mainImage $}" alt="">  

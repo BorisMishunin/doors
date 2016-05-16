@@ -2,6 +2,7 @@ from django.conf import settings
 import os
 from zipfile import ZipFile
 from web.models import Goods, TypesOfGoods, Properties, GoodsProperties, Values
+import codecs
 
 def uploaded_file(f):
     print(settings.MEDIA_ROOT + str(f))
