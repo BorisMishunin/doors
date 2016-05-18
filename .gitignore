@@ -18,9 +18,6 @@ pip-delete-this-directory.txt
 
 # Django stuff:
 *.log
-migrations/
-
-media/
 
 # Sphinx documentation
 docs/_build/
