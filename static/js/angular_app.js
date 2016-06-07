@@ -25,7 +25,7 @@ app.filter('startFrom', function() {
 });
 
 app.controller('GoodCardController', function($scope, $http){
-    $http.get('/api/goods/690.json').success(function(data){
+    $http.get('/api/goods/360.json').success(function(data){
         $scope.good = data;
     });
 });

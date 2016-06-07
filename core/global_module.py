@@ -25,7 +25,10 @@ def load_files(f):
         for line in import_data:
             door_name, fotos_list, door_params = line.split(';')
             for foto in fotos_list.split(','):
-                add_new_door(door_name+'_'+foto, os.path.join(str(f).split('.')[0], foto+'.jpg'), door_params)
+                try:
+                    add_new_door(door_name+'_'+foto, os.path.join(str(f).split('.')[0], foto+'.jpg'), door_params)
+                except:
+                    pass
 
 def add_new_door(door_name,foto,door_params):
     type = TypesOfGoods.objects.get(id=1)

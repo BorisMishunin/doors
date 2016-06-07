@@ -6,6 +6,7 @@ from web.widgets import ColorPickerWidget
 class GoodsInlines(admin.StackedInline):
     model = GoodsColors
     extra = 3
+
 class GoodsPropertiesInlines(admin.StackedInline):
     model = GoodsProperties
     extra = 3
